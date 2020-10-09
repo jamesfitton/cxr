@@ -1,6 +1,6 @@
 # 1.0 Coast X-Ray
  
-The intertidal zone is a dynamic environment, which results in the relativly frequent change of high and line water marks. It is important to be able to monitor these changes, as intertidal stability or instability can have a considerable influence on the rate and extent of coastal erosion and flooding, which are both expected to worsen with climate change. 
+The intertidal zone is a dynamic environment, which results in the relatively frequent change of high and line water marks. It is important to be able to monitor these changes, as intertidal stability or instability can have a considerable influence on the rate and extent of coastal erosion and flooding, which are both expected to worsen with climate change. 
 
 Bespoke tidal surveys to capture the full extent of the intertidal is often expensive and logistically difficult, especially in areas with large tidal ranges. However, an approach developed within the Scottish [Dynamic Coast](www.DynamicCoast.com) project using Sentinel 2 data offers insight into the extent of the intertidal zone.
 
@@ -10,7 +10,7 @@ Sentinel 2 images are collected for an area of interest to create a time series 
 <img src="images/imageCollectionStack.jpg" width="300">
 </p>
 
-We can then identify the water in each each image (using the Normalised Difference Water Index (NDWI)) and create an image that represents the fequency of water occurrence across the intertidal. This can be used to make interpretations about the intertidal geomorphology, as shown in the image below:
+We can then identify the water in each image (using the Normalised Difference Water Index (NDWI)) and create an image that represents the frequency of water occurrence across the intertidal. This can be used to make interpretations about the intertidal geomorphology, as shown in the image below:
 
 <p align="center">
 <img src="images/waterOccurrenceIntertidal.jpg" width="500">
@@ -28,11 +28,11 @@ A fully interactive map based version can be see [here](https://jamesmfitton.use
 
 Coast X-Ray utilises [Google Earth Engine](https://earthengine.google.com/) (GEE) to produce the outputs. This is a very powerful tool and if you are a new user of GEE, it is highly recommended that you take a look at the [introduction material](https://developers.google.com/earth-engine/) and to become familiar with the [GEE code editor](https://code.earthengine.google.com/) and GEE terminology before proceeding with the Coast X-Ray code.
 
-GEE uses Javascript within the online code editor, however added functionality (mainly associated with the exporting of assets) can be achieved by using Python via the [Python API](https://developers.google.com/earth-engine/python_install). Therefore, Coast X-Ray uses Python, however, the terminology assocaited with GEE remains the same. There is also some code which runs within [R](https://www.r-project.org/).   
+GEE uses JavaScript within the online code editor, however added functionality (mainly associated with the exporting of assets) can be achieved by using Python via the [Python API](https://developers.google.com/earth-engine/python_install). Therefore, Coast X-Ray uses Python, however, the terminology associated with GEE remains the same. There is also some code which runs within [R](https://www.r-project.org/).   
 
 ## 1.2 The Code Explained
 
-It can be sometimes difficult, especially for new users, to understand what the code does and for what purpose. Below is a succint explanation of the processes that are carried out by the code. Note, that for the code to function correctly these steps need to be performed in sequence.
+It can be sometimes difficult, especially for new users, to understand what the code does and for what purpose. Below is a succinct explanation of the processes that are carried out by the code. Note, that for the code to function correctly these steps need to be performed in sequence.
 
 **Step 1. Generate a grid (globalGrid.ipynb)**
 
@@ -52,14 +52,14 @@ To identify the intertidal/coastal cells three supporting datasets are used: dat
 
 **Step 3 - Generate water occurrence analysis (waterOccurrence)**
 
-The intertidal grid that was generated in the Step 2 will now be used to produce a water occurrence analysis. Each of the cells within the intertidal grid are processed in turn by the script in *waterOccurrence/notebooks/waterOccurrence.ipynb*, producing a seperate image for each cell. The images are added to GEE within an image collection, which can support filterting of the images, and mosaicing.
+The intertidal grid that was generated in the Step 2 will now be used to produce a water occurrence analysis. Each of the cells within the intertidal grid are processed in turn by the script in *waterOccurrence/notebooks/waterOccurrence.ipynb*, producing a separate image for each cell. The images are added to GEE within an image collection, which can support filtering of the images, and mosaicking.
 
 For each cell within the intertidal grid, the water occurrence image is produced by:
 - clipping the Sentinel 2 image collection to the grid cell
 - filtering out images that do not cover all of the grid cell area (due to cloud cover or being at the edge of an image)
 - calculating the Normalised Difference Water Index (NDWI) for each image
 - identifying the water in each image using a fixed threshold approach
-- amalgamting the time series of images to produce a single image by calculating the water occurrence percentage
+- amalgamating the time series of images to produce a single image by calculating the water occurrence percentage
 - exporting the image to an image collection on GEE
 - exporting image metadata to a feature dataset
 
@@ -72,7 +72,7 @@ GEE also offer a [guide](https://developers.google.com/earth-engine/python_insta
 
 **Step 1: Download Coast X-Ray:** Clone or download the Coast X-Ray repository from GitHub using the button 'Clone or Download' above and save it somewhere locally on your computer, e.g. C:\CoastXRay.
 
-**Step 2. Anaconda:** Install [Anaconda](https://www.anaconda.com/download/). Open the Anaconda prompt (PC) or on a Mac or Linux system open a terminal window. Use the `cd` command to change the directory, and navigte to go the folder where you have downloaded the Coast X-Ray repository (see [here](https://www.digitalcitizen.life/command-prompt-how-use-basic-commands) for information on how to use the command prompt).
+**Step 2. Anaconda:** Install [Anaconda](https://www.anaconda.com/download/). Open the Anaconda prompt (PC) or on a Mac or Linux system open a terminal window. Use the `cd` command to change the directory, and navigate to go the folder where you have downloaded the Coast X-Ray repository (see [here](https://www.digitalcitizen.life/command-prompt-how-use-basic-commands) for information on how to use the command prompt).
 
 **Step 3: Create a new environment:** Create a new environment named `coastxray` with all the required packages:
 
@@ -96,7 +96,7 @@ To use GEE you need to create an account. Go to https://earthengine.google.com a
 earthengine authenticate
 ```
 
-This will open a web browser and ask you to login into your GEE account. An authorisation code will be given, which you copy and paste back in the the Anaconda prompt. 
+This will open a web browser and ask you to login into your GEE account. An authorisation code will be given, which you copy and paste back in the Anaconda prompt. 
 
 This completes the installation.
 
@@ -105,7 +105,7 @@ This completes the installation.
 
 The scripts are designed to run in sequence -> globalGrid -> intertidalGrid -> waterOccurrence. They are also designed to run in [Jupyter Notebooks](https://jupyter.org/). This is a "web-based interactive development environment" and allows for comments and descriptions to be added to the code to support/aid understanding.
 
-Ensure that you have navigated to the CoastXRay directory within the  anaconda prompt, e.g. C:\CoastXRay, then type:
+Ensure that you have navigated to the CoastXRay directory within the anaconda prompt, e.g. C:\CoastXRay, then type:
 
 ```
 jupyter notebook
