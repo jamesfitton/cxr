@@ -4,19 +4,13 @@ The intertidal zone is a dynamic environment, which results in the relatively fr
 
 Bespoke tidal surveys to capture the full extent of the intertidal is often expensive and logistically difficult, especially in areas with large tidal ranges. However, an approach developed within the Scottish [Dynamic Coast](www.DynamicCoast.com) project using Sentinel 2 data offers insight into the extent of the intertidal zone.
 
-Sentinel 2 images are collected for an area of interest to create a time series of images, with each image capturing a slighlty different tidal position. 
-
-<p align="center">
-<img src="images/imageCollectionStack.jpg" width="300">
-</p>
-
-We can then identify the water in each image (using the Normalised Difference Water Index (NDWI)) and create an image that represents the frequency of water occurrence across the intertidal. This can be used to make interpretations about the intertidal geomorphology, as shown in the image below:
+Using a time-series of Sentinel 2 images for an area of interest, with each image capturing a slighlty different tidal position. We can then identify the water in each image (using the Normalised Difference Water Index (NDWI)). It is then possible to create an image that represents the frequency of water occurrence across the intertidal zone. This can be used to make interpretations about the intertidal geomorphology, as shown in the image below:
 
 <p align="center">
 <img src="images/waterOccurrenceIntertidal.jpg" width="500">
 </p>
 
-Therefore, areas that are always water (i.e. areas below Low Water) will always be covered by water and have a water occurrence frequency of 100% (i.e. in all of the images in the image collection, water was always identified in that location). Areas that are sometimes covered by water represent the intertidal zone. An example of the Coast X-Ray output for St. Andrews, Fife, Scotland,  is shown below:
+Areas that are always water (i.e. areas below Low Water) will always be covered by water and have a water occurrence frequency of 100% (i.e. in all of the images in the image collection, water was always identified in that location). Areas that are sometimes covered by water will represent the intertidal zone. An example of the Coast X-Ray output for St. Andrews, Fife, Scotland,  is shown below:
 
 <p align="center">
 <img src="images/stAndrewsExample.jpg" width="500">
@@ -24,11 +18,13 @@ Therefore, areas that are always water (i.e. areas below Low Water) will always 
 
 A fully interactive map based version can be see [here](https://jamesmfitton.users.earthengine.app/view/coastxray)
 
+This GitHub respository includes the code and instructions to create a Coast X-Ray water occurrence output for your area of interest.
+
 ## 1.1 The Code 
 
 Coast X-Ray utilises [Google Earth Engine](https://earthengine.google.com/) (GEE) to produce the outputs. This is a very powerful tool and if you are a new user of GEE, it is highly recommended that you take a look at the [introduction material](https://developers.google.com/earth-engine/) and to become familiar with the [GEE code editor](https://code.earthengine.google.com/) and GEE terminology before proceeding with the Coast X-Ray code.
 
-GEE uses JavaScript within the online code editor, however added functionality (mainly associated with the exporting of assets) can be achieved by using Python via the [Python API](https://developers.google.com/earth-engine/python_install). Therefore, Coast X-Ray uses Python, however, the terminology associated with GEE remains the same. There is also some code which runs within [R](https://www.r-project.org/).   
+GEE uses JavaScript within the online code editor, however, added functionality (mainly associated with the exporting of assets) can be achieved by using Python via the [Python API](https://developers.google.com/earth-engine/python_install). Coast X-Ray uses the Python API, however, there is also some code which runs within [R](https://www.r-project.org/).   
 
 ## 1.2 The Code Explained
 
@@ -42,7 +38,7 @@ In order to make processing within GEE more efficient areas of interest are brok
 <img src="images/globalGridExample.jpg" width="500">
 </p>
 
-The code within *globalGrid/notebooks/globalGrid.ipynb* generates a global grid of hexagons, at the users desired resolution, which is then saved locally. 
+The code within *globalGrid/notebooks/globalGrid.ipynb* generates a global grid of hexagons, at the users desired resolution, which is then saved locally. The code runs in a Jupyter Notebook, but note that it is within an 'R' kernel.
 
 **Step 2 - Generate an intertidal grid (intertidalGrid.ipynb)**
 
