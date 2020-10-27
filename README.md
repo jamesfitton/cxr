@@ -30,7 +30,7 @@ GEE uses JavaScript within the online code editor, however, added functionality 
 
 It can be sometimes difficult, especially for new users, to understand what the code does and for what purpose. Below is a succinct explanation of the processes that are carried out by the code. Note, that for the code to function correctly these steps need to be performed in sequence.
 
-**Step 1. Generate a grid [analysisGrid.ipynb](grid/globalGrid.ipynb)**
+**Step 1. Generate a grid [analysisGrid.ipynb](grid/analysisGrid.ipynb)**
 
 In order to make processing within GEE more efficient areas of interest are broken up into small areas using a grid. Coast X-Ray uses a Discrete Global Grid (DDG) to split the globe into small areas. Coast X-Ray makes use of the ISEA3H: Icosahedral Snyder Equal Area Aperture 3 Hexagonal Grid which can be accessed via the R package [dggridR](https://cran.r-project.org/web/packages/dggridR/vignettes/dggridR.html). A hexagonal grid was chosen as this ensures that (almost) all cells are of an equal area, regardless where you are on the globe. The ISEA3H grid can be created at different resolutions (i.e. cell sizes), with an example of given below of the 5th resolution:
 
@@ -106,6 +106,12 @@ Ensure that you have navigated to the CoastXRay directory within the Anaconda pr
 ```
 jupyter notebook
 ```
+Activating the environment and starting jupyter notebooks should look like this in your Anaconda Prompt:
+
+
+<p align="center">
+<img src="images/prompt.png" width="500">
+</p>
 
 This will then open a web browser, and you should be able to see the files within the C:\CoastXRay directory. The files that end with .ipynb contain the scripts. For more information on how to use Jupyter Notebooks, see this [video](https://www.youtube.com/watch?v=HW29067qVWk).
 
