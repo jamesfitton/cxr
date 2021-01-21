@@ -30,7 +30,7 @@ GEE uses JavaScript within the online code editor, however, added functionality 
 
 It can be sometimes difficult, especially for new users, to understand what the code does and for what purpose. Below is a succinct explanation of the processes that are carried out by the code. Note, that for the code to function correctly these steps need to be performed in sequence.
 
-**Step 1. Generate a grid [analysisGrid.ipynb](grid/analysisGrid.ipynb)**
+**Step 1. Generate a grid [grid/analysisGrid.ipynb](grid/analysisGrid.ipynb)**
 
 In order to make processing within GEE more efficient areas of interest are broken up into small areas using a grid. Coast X-Ray uses a Discrete Global Grid (DDG) to split the globe into small areas. Coast X-Ray makes use of the ISEA3H: Icosahedral Snyder Equal Area Aperture 3 Hexagonal Grid which can be accessed via the R package [dggridR](https://cran.r-project.org/web/packages/dggridR/vignettes/dggridR.html). A hexagonal grid was chosen as this ensures that (almost) all cells are of an equal area, regardless where you are on the globe. The ISEA3H grid can be created at different resolutions (i.e. cell sizes), with an example of given below of the 5th resolution:
 
@@ -40,7 +40,7 @@ In order to make processing within GEE more efficient areas of interest are brok
 
 The code within *globalGrid/notebooks/globalGrid.ipynb* generates a global grid of hexagons, at the users desired resolution, which is then saved locally. The code runs in a Jupyter Notebook, but note that it is within an 'R' kernel. A grid resolution of 12 is recommended as a good balance between size and efficiency.
 
-**Step 2 - Generate an intertidal grid [grid/intertidalGrid.ipynb](intertidalGrid/intertidalGrid.ipynb)**
+**Step 2 - Generate an intertidal grid [intertidalGrid/intertidalGrid.ipynb](intertidalGrid/intertidalGrid.ipynb)**
 
 The global grid created in Step 1 is large and needs to be filtered down to an area of interest. However, the code within *grid/intertidalGrid.ipynb* not only filters the grid cells to the area of interest, but also to the cells that contain intertidal areas. This means that a whole country can be used as an area of interest, however only the intertidal/coastal cells will be selected for use in the subsequent analysis. 
 
@@ -59,6 +59,11 @@ For each cell within the intertidal grid, the water occurrence image is produced
 - exporting the image to an image collection on GEE
 - exporting image metadata to a feature dataset
 
+**Further Analysis**
+
+Using the image metadata output from step 3, if you have available to you via a tidal model or a tide gauge, a tide stage can be assigned to each image in a grid cell using the data/time of image aquisition.
+
+Coast X-Ray was developed using the [NOC POLPRED] (https://noc-innovations.co.uk/software/offshore) model API under license. Therefore, code to allocate a tide stage to each image and the further processing is not provided here. However, the freely accessible [FES2014](https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html) tidal model has been used by others and a version of Coast X-Ray is in development. 
 
 ## 3.0 Installation
 
