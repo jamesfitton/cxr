@@ -20,7 +20,7 @@ Areas that are always water (i.e. areas below Low Water) will always be covered 
 
 A fully interactive map based version can be see [here](https://jamesmfitton.users.earthengine.app/view/coastxray).
 
-This GitHub respository supports the [journal publication](), and includes the code and instructions to create a Coast X-Ray water occurrence output for your area of interest.
+This GitHub respository supports the [journal publication](https://doi.org/10.1016/j.rsase.2021.100499), and includes the code and instructions to create a Coast X-Ray water occurrence output for your area of interest.
 
 ## 1.1 The Code 
 
