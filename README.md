@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.1016/j.rsase.2021.100499.svg)](https://doi.org/10.1016/j.rsase.2021.100499)
+
 # 1.0 Coast X-Ray
  
 The intertidal zone is a dynamic environment, which results in the relatively frequent change of high and line water marks. It is important to be able to monitor these changes, as intertidal stability or instability can have a considerable influence on the rate and extent of coastal erosion and flooding, which are both expected to worsen with climate change. 
