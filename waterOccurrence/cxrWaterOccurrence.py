@@ -253,4 +253,18 @@ def featureProperties(date):
 
     return gridCellFeature.set('date', ee.Date(date).format("YYYY-MM-dd HH:mm")).set('dateMilli', date).set('imageID', imageId).set('imageMeanAzimuth', meanAzimuth).set('imageMeanZenith', meanZenith).set('imageCloudCover', cloudCoverage).set('numberOfImagesAnalysed', ee.Number(gridCellNDWICollectionSize)).set('analysisStart', ee.Date(startDate).format("YYYY-MM-dd")).set('analysisEnd', ee.Date(endDate).format("YYYY-MM-dd")).set('earliestImageAnalysed', earliestImage).set('latestImageAnalysed', latestImage).set('cellCloudCoverThreshold', ee.Number(cellCloudCoverFilterValue)).set('cell', ee.Number(cellNumber)).set('cellResolution', ee.Number(gridResolution)).set('mosaicImageCount', mosaicImageCount)
     
+def mergeGeometries(collection):
+    """ Merge the geometries of many images. Return ee.Geometry """
+    imlist = collection.toList(collection.size())
 
+    first = ee.Image(imlist.get(0))
+    rest = imlist.slice(1)
+
+    def wrap(img, ini):
+        ini = ee.Geometry(ini)
+        img = ee.Image(img)
+        geom = img.geometry()
+        union = geom.union(ini)
+        return union.dissolve()
+
+    return ee.Geometry(rest.iterate(wrap, first.geometry()))
