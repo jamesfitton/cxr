@@ -1,4 +1,4 @@
-name: cxr
+name: coastxray
 channels:
   - defaults
   - conda-forge
